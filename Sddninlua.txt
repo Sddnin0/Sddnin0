@@ -1,7 +1,7 @@
 
 
 
-shared.LoaderTitle = "Sddnin";
+shared.LoaderTitle = "Sddnin ";
 shared.LoaderKeyFrames = {
     [1] = {
         1,
