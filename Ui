@@ -1,14 +1,28 @@
-local toggleButton = script.Parent -- Reference to the button
-local targetFrame = script.Parent.Parent:WaitForChild("TargetFrame") -- Locate the target frame
+local toggleButton = script.Parent
+local targetFrame = script.Parent.Parent:FindFirstChild("TargetFrame")
 
--- Set button color to purple
-toggleButton.BackgroundColor3 = Color3.fromRGB(128, 0, 128) -- Purple
+-- Check if the target frame exists
+if not targetFrame then
+    warn("TargetFrame not found!")
+    return
+end
 
--- Variable to track visibility state
+-- Set the button color to purple
+toggleButton.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+
+-- Optional: Set initial button text
+toggleButton.Text = "Hide Frame"
+
 local isVisible = true
 
--- Function to toggle visibility when button is clicked
 toggleButton.MouseButton1Click:Connect(function()
-    isVisible = not isVisible -- Toggle the boolean value
-    targetFrame.Visible = isVisible -- Apply visibility change
+    isVisible = not isVisible
+    targetFrame.Visible = isVisible
+
+    -- Update button text based on visibility
+    if isVisible then
+        toggleButton.Text = "Hide Frame"
+    else
+        toggleButton.Text = "Show Frame"
+    end
 end)
