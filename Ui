@@ -1,55 +1,14 @@
-using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+local toggleButton = script.Parent -- Reference to the button
+local targetFrame = script.Parent.Parent:WaitForChild("TargetFrame") -- Locate the target frame
 
-public class ToggleUI : MonoBehaviour
-{
-    public GameObject targetPanel;       // The panel to toggle
-    public CanvasGroup canvasGroup;      // CanvasGroup for fade effect
-    public Button toggleButton;          // The button to toggle
+-- Set button color to purple
+toggleButton.BackgroundColor3 = Color3.fromRGB(128, 0, 128) -- Purple
 
-    private bool isVisible = true;
+-- Variable to track visibility state
+local isVisible = true
 
-    void Start()
-    {
-        // Assign the button click event
-        toggleButton.onClick.AddListener(TogglePanel);
-
-        // Set purple color to the button
-        Color purpleColor = new Color(0.5f, 0f, 0.5f, 1f); // RGBA
-        toggleButton.GetComponent<Image>().color = purpleColor;
-
-        // Ensure panel is visible at start
-        canvasGroup.alpha = 1f;
-        targetPanel.SetActive(true);
-    }
-
-    void TogglePanel()
-    {
-        isVisible = !isVisible;
-        StopAllCoroutines(); // Stop any running fades
-        StartCoroutine(FadeCanvas(isVisible));
-    }
-
-    IEnumerator FadeCanvas(bool show)
-    {
-        float startAlpha = canvasGroup.alpha;
-        float endAlpha = show ? 1f : 0f;
-        float duration = 0.3f;
-        float time = 0f;
-
-        if (show) targetPanel.SetActive(true);
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            float t = time / duration;
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
-            yield return null;
-        }
-
-        canvasGroup.alpha = endAlpha;
-
-        if (!show) targetPanel.SetActive(false);
-    }
-}
+-- Function to toggle visibility when button is clicked
+toggleButton.MouseButton1Click:Connect(function()
+    isVisible = not isVisible -- Toggle the boolean value
+    targetFrame.Visible = isVisible -- Apply visibility change
+end)
