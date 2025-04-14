@@ -1,28 +1,55 @@
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
-local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 300, 0, 200)
-mainFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
-mainFrame.BackgroundColor3 = Color3.fromRGB(128, 0, 128) -- Purple color
-mainFrame.BorderSizePixel = 0
-mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-mainFrame.BackgroundTransparency = 1 -- Start invisible
-mainFrame.Parent = screenGui
+public class ToggleUI : MonoBehaviour
+{
+    public GameObject targetPanel;       // The panel to toggle
+    public CanvasGroup canvasGroup;      // CanvasGroup for fade effect
+    public Button toggleButton;          // The button to toggle
 
-local uiCorner = Instance.new("UICorner")
-uiCorner.CornerRadius = UDim.new(0, 12)
-uiCorner.Parent = mainFrame
+    private bool isVisible = true;
 
-local tweenService = game:GetService("TweenService")
-local tweenInfo = TweenInfo.new(
-    1, -- Duration in seconds
-    Enum.EasingStyle.Quad,
-    Enum.EasingDirection.Out
-)
+    void Start()
+    {
+        // Assign the button click event
+        toggleButton.onClick.AddListener(TogglePanel);
 
-local goal = {BackgroundTransparency = 0}
-local tween = tweenService:Create(mainFrame, tweenInfo, goal)
+        // Set purple color to the button
+        Color purpleColor = new Color(0.5f, 0f, 0.5f, 1f); // RGBA
+        toggleButton.GetComponent<Image>().color = purpleColor;
 
-wait(3) -- Wait 3 second before showing
-tween:Play()
+        // Ensure panel is visible at start
+        canvasGroup.alpha = 1f;
+        targetPanel.SetActive(true);
+    }
+
+    void TogglePanel()
+    {
+        isVisible = !isVisible;
+        StopAllCoroutines(); // Stop any running fades
+        StartCoroutine(FadeCanvas(isVisible));
+    }
+
+    IEnumerator FadeCanvas(bool show)
+    {
+        float startAlpha = canvasGroup.alpha;
+        float endAlpha = show ? 1f : 0f;
+        float duration = 0.3f;
+        float time = 0f;
+
+        if (show) targetPanel.SetActive(true);
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
+            yield return null;
+        }
+
+        canvasGroup.alpha = endAlpha;
+
+        if (!show) targetPanel.SetActive(false);
+    }
+}
