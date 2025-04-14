@@ -1,0 +1,28 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 300, 0, 200)
+mainFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
+mainFrame.BackgroundColor3 = Color3.fromRGB(128, 0, 128) -- Purple color
+mainFrame.BorderSizePixel = 0
+mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+mainFrame.BackgroundTransparency = 1 -- Start invisible
+mainFrame.Parent = screenGui
+
+local uiCorner = Instance.new("UICorner")
+uiCorner.CornerRadius = UDim.new(0, 12)
+uiCorner.Parent = mainFrame
+
+local tweenService = game:GetService("TweenService")
+local tweenInfo = TweenInfo.new(
+    1, -- Duration in seconds
+    Enum.EasingStyle.Quad,
+    Enum.EasingDirection.Out
+)
+
+local goal = {BackgroundTransparency = 0}
+local tween = tweenService:Create(mainFrame, tweenInfo, goal)
+
+wait(3) -- Wait 3 second before showing
+tween:Play()
