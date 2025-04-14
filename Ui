@@ -1,102 +1,364 @@
-local Ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/drillygzzly/Roblox-UI-Libs/main/Abyss%20Lib/Abyss%20Lib%20Source.lua"))()
-local Ui = Library
+local Decimals = 4
+local Clock = os.clock()
+local ValueText = "Value Is Now :"
 
-local LoadTime = tick()
-
-local Loader = Library.CreateLoader(
-    "Title Here", 
-    Vector2.new(300, 300)
-)
-
-local Window = Library.Window(
-    "Text Here", 
-    Vector2.new(500, 620)
-)
-
-Window.SendNotification(
-    "Normal", -- Normal, Warning, Error 
-    "Press RightShift to open menu and close menu!", 
-    10
-)
-
-Window.Watermark(
-    "Text Here"
-)
--- Window:Visible = true
-
--- // UI Main \\ --
-local Tab1 = Window:Tab("Tab1")
-local Section1 = Tab1:Section(
-    "Section1", 
-    "Left"
-)
-
-
-Section1:Toggle({
-    Title = "Toggle1", 
-    Flag = "Toggle_1",
-    Type = "Dangerous",
-    Callback = function(v)
-        print("Value = "..v)
-    end
-}): -- Toggle Keybind Below
-    Keybind({
-    Title = "KeybindToggle1",
-    Flag = "Keybind_Toggle_1", 
-    Key = Enum.UserInputType.MouseButton2, 
-    StateType = "Toggle"
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/drillygzzly/Roblox-UI-Libs/main/1%20Tokyo%20Lib%20(FIXED)/Tokyo%20Lib%20Source.lua"))({
+    cheatname = "Title Here", -- watermark text
+    gamename = "Title Here", -- watermark text
 })
 
-Section1:Toggle({
-    Title = "Toggle2", 
-    Flag = "Toggle_2"
+library:init()
 
-}):
-Colorpicker({
-    Color = Library.Theme.Accent[2], 
-    Flag = "Toggle2Color"
-})
+local Window1  = library.NewWindow({
+    title = "Title Here | Title Here", -- Mainwindow Text
+    size = UDim2.new(0, 510, 0.6, 6
+)})
 
-
-Section1:Slider({
-    Title = "Slider1", 
-    Flag = "Slider_1", 
-    Symbol = "", 
-    Default = 0, 
-    Min = 0, 
-    Max = 20, 
-    Decimals = 1,
-    Callback = function(v)
-        print("Value = "..v)
-    end
-})
-Section1:Dropdown({
-    Title = "Dropdown1", 
-    List = {"1", "2" ,"3"}, 
-    Default = "1", 
-    Flag = "DropDown_1",
-    Callback = function(v)
-        print("Value = "..v)
-    end
-})
-
-Section1:Button({
-    Title = "Button1",
+------ Tab
+     local Tab1o = MakeTab({Name = "Blox fruits"})
+     local Tab2o = MakeTab({Name = "Tool"})
+local Tab3o = MakeTab({Name = "Kaitun"})
+local Tab4o = MakeTab({Name = "Dead rails"})
+------- BUTTON
+    
+      AddButton(Tab1o, {
+     Name = "Xeter Hub",
     Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+}  
+			
+getgenv().Version = "V1" loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Loader/main/Xeter.lua"))(Settings)
+end
+})
+AddButton(Tab2o, {
+     Name = "Infinite Yield",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+		}
+
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	end
+})
+	
+AddButton(Tab2o, {
+     Name = "Fly v3",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+		}
+
+		loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10")()
+	end
+})
+
+AddButton(Tab3o, {
+     Name = "Hop fruit (Blox fruits)",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+
+_G.FruitFinder = true;
+loadstring(game:HttpGet("https://scripts.alchemyhub.xyz"))()
+		end
+	})
+
+	AddButton(Tab4o, {
+     Name = "AirFlow",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+				}
+
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/255ac567ced3dcb9e69aa7e44c423f19.lua"))()
+			end
+		})
+
+AddButton(Tab4o, {
+     Name = "TN Roblox",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+				}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thiennrb7/Script/refs/heads/main/Bringall"))()
+			end
+		})
+AddButton(Tab1o, {
+     Name = "Redz",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/newredz/BloxFruits/refs/heads/main/Source.luau"))(Settings)
+		end
+	})
+
+AddButton(Tab1o, {
+     Name = "Min gaming",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinXoE"))()
+		end
+	}) 
+
+AddButton(Tab4o, {
+     Name = "Bond and win",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TwoGunVolley/Dedrail/refs/heads/main/Protected_8860927939362090.txt"))()
+		end
+	}) 
+AddButton(Tab1o, {
+     Name = "Sddnin Hub",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Sddnin0/Sddnin-hub/refs/heads/main/Sddninlhublua.txt"))()
+		end
+	}) 
+AddButton(Tab2o, {
+     Name = "Emote",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGetAsync("https://gist.githubusercontent.com/RedZenXYZ/3da6af1961efa275de6c3c2a6dbace03/raw/bb027f99cec0ea48ef9c5eabfb9116ddff20633d/FE%2520Emotes%2520Gui"))()
+		end
+	}) 
+AddButton(Tab4o, {
+     Name = "Bond and win 2",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/refs/heads/ok/dead%20rails"))()
+		end
+	}) 
+
+	AddButton(Tab4o, {
+     Name = "Null-Fire",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-Fire/main/Loader"))("DingaScripts")
+			end
+			})
+			
+	AddButton(Tab4o, {
+     Name = "NPC lock",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://rawscripts.net/raw/Dead-Rails-NPC-LOCK-32544"))()
+			end
+			})
+
+AddButton(Tab2o, {
+     Name = "Nameless Admin",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-nameless-admin-15646"))()
+			end
+			})
+			
+			AddButton(Tab1o, {
+     Name = "Hiru Hub",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NGUYENVUDUY1/Source/main/HiruHub.lua"))()
+			end
+			})
+			
+			AddButton(Tab1o, {
+     Name = "Maru Hub",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/KimP/refs/heads/main/MaruHub"))()
+			end
+			})
+			
+			AddButton(Tab1o, {
+     Name = "Trau Roblox",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+			}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/stuckez999/main/refs/heads/main/traurobloxpremium.lua"))()
+			end
+			})
+}):AddBind({
+    enabled = true,
+    text = "Keybind1",
+    tooltip = "tooltip1",
+    mode = "toggle",
+    bind = "None",
+    flag = "ToggleKey_1",
+    state = false,
+    nomouse = false,
+    risky = false,
+    noindicator = false,
+    callback = function(v)
+        print(ValueText, v)
+    end,
+    keycallback = function(v)
+        print(ValueText, v)
+    end
+})
+
+Section1:AddBox({
+    enabled = true,
+    name = "TextBox1",
+    flag = "TextBox_1",
+    input = "PlaceHolder1",
+    focused = false,
+    risky = false,
+    callback = function(v)
+        print(ValueText, v)
+    end
+})
+
+--[[Section1:AddToggle({
+    text = "Toggle1",
+    flag = "Toggle_1",
+    callback = function(v)
+        print(ValueText, v)
+    end
+}):AddColor({
+    text = "Color1",
+    color = Color3.fromRGB(255, 255, 255),
+    flag = "Color_1",
+    callback = function(v)
+        print(ValueText, v)
+    end
+})--]]
+
+--[[Section1:AddBind({
+    enabled = true,
+    text = "Keybind1",
+    tooltip = "tooltip1",
+    mode = "toggle",
+    bind = "None",
+    flag = "ToggleKey_1",
+    state = false,
+    nomouse = false,
+    risky = false,
+    noindicator = false,
+    callback = function(v)
+        print(ValueText, v)
+    end,
+    keycallback = function(v)
+        print(ValueText, v)
+    end
+})--]]
+
+Section1:AddSeparator({
+    enabled = true,
+    text = "Separator1"
+})
+
+Section1:AddButton({
+    enabled = true,
+    text = "Button1",
+    tooltip = "tooltip1",
+    confirm = true,
+    risky = false,
+    callback = function()
         print("Pressed!")
     end
 })
 
---Section1:Colorpicker({
-    --Title = "ColorPicker1"
---})
+-- Button1:SetText("Text")
 
---Section1:Label({
-    --Title = "Label1"
---})
+Section1:AddSlider({
+    enabled = true,
+    text = "Slider1",
+    tooltip = "tooltip1",
+    flag = "Slider_1",
+    suffix = "",
+    dragging = true,
+    focused = false,
+    min = 0,
+    max = 100,
+    increment = 0.1,
+    risky = false,
+    callback = function(v)
+        print(ValueText, v)
+    end
+})
 
---Tab1:AddPlayerlist()
-Window:AddSettingsTab()
-Window:SwitchTab(Tab1)
-Window.ToggleAnime(false)
-LoadTime = math.floor((tick() - LoadTime) * 1000)
+--Slider_1:SetValue(100)
+
+Section1:AddList({
+    enabled = true,
+    text = "Selection", 
+    tooltip = "tooltip1",
+    selected = "",
+    multi = false,
+    open = false,
+    max = 4,
+    values = {"1", "2", "3"},
+    risky = false,
+    callback = function(v)
+        print(ValueText, v)
+    end
+})
+
+Section1:AddColor({
+    enabled = true,
+    text = "Color1",
+    tooltip = "tooltip1",
+    color = Color3.fromRGB(255, 255, 255),
+    flag = "Color_1",
+    trans = 0,
+    open = false,
+    risky = false,
+    callback = function(v)
+        print(ValueText, v)
+    end
+})
+
+local Time = (string.format("%."..tostring(Decimals).."f", os.clock() - Clock))
+library:SendNotification(("Loaded In "..tostring(Time)), 6)
+
+--[[
+    --Window1:SetOpen(false)
+    makefolder("Title Here")
+    library:SetTheme(Default)
+    library:GetConfig(Default)
+    library:LoadConfig(Default)
+    library:SaveConfig(Default)
+]]
